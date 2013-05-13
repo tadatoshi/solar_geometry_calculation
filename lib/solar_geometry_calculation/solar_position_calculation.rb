@@ -14,8 +14,9 @@ module SolarGeometryCalculation
     end
 
 
-    def declination
-      radian = degree_to_radian(BigDecimal("360") / BigDecimal("365") * (day_of_the_year(@solar_time.year, @solar_time.month, @solar_time.day, @solar_time.hour, @solar_time.minute) + 284))
+    def declination(with_hour_and_minutes: true)
+      day_of_the_year = with_hour_and_minutes ? day_of_the_year(@solar_time.year, @solar_time.month, @solar_time.day, @solar_time.hour, @solar_time.minute) : day_of_the_year(@solar_time.year, @solar_time.month, @solar_time.day)
+      radian = degree_to_radian(BigDecimal("360") / BigDecimal("365") * (day_of_the_year + 284))
       (23.45 * big_decimal_sin(radian)).round(2)
     end
 
@@ -92,7 +93,7 @@ module SolarGeometryCalculation
 
       def sunrise_sunset_base_angle
         latitude_in_radian = degree_to_radian(BigDecimal(self.latitude.to_s))
-        declination_in_radian = degree_to_radian(self.declination)
+        declination_in_radian = degree_to_radian(self.declination(with_hour_and_minutes: false))
 
         sunrise_sunset_base_angle_in_radian = big_decimal_acos(-(big_decimal_tan(latitude_in_radian) * big_decimal_tan(declination_in_radian)))
         radian_to_degree(sunrise_sunset_base_angle_in_radian)

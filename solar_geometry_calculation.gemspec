@@ -20,7 +20,7 @@ Gem::Specification.new do |s|
   s.require_paths = ["lib"]
 
   s.add_dependency 'tzinfo'
-  s.add_dependency 'activesupport', "~> 3.2.8"
+  s.add_dependency 'activesupport', "~> 4.0.0.rc1"
 
   s.add_development_dependency "rspec"
 end

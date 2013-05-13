@@ -103,6 +103,18 @@ describe SolarGeometryCalculation::SolarPositionCalculation do
       solar_position_calculation_3.sunrise.should == "5:36"      
       
     end
+
+    it "should calculate the same sunrise time throughout the same day" do
+
+      solar_position_calculation_1 = SolarGeometryCalculation::SolarPositionCalculation.new(:latitude => "45.46", :meridian => "-75", :longitude => "-73.75", :timezone_identifier => "America/Montreal", :year => 2010, :month => 9, :day => 21, :hour => 3, :minute => 0, :surface_inclination => "0", :surface_azimuth => "0")
+      solar_position_calculation_1.sunrise.should == "6:49"
+
+      solar_position_calculation_2 = SolarGeometryCalculation::SolarPositionCalculation.new(:latitude => "45.46", :meridian => "-75", :longitude => "-73.75", :timezone_identifier => "America/Montreal", :year => 2010, :month => 9, :day => 21, :hour => 21, :minute => 0, :surface_inclination => "0", :surface_azimuth => "0")
+      solar_position_calculation_2.sunrise.should == "6:49" 
+
+      solar_position_calculation_1.sunrise.should == solar_position_calculation_2.sunrise    
+
+    end
     
     context "(solar energy and applications course - homework 2)" do
       
@@ -118,6 +130,18 @@ describe SolarGeometryCalculation::SolarPositionCalculation do
   end
 
   context "Sunset" do
+
+    it "should calculate the same sunset time throughout the same day" do
+
+      solar_position_calculation_1 = SolarGeometryCalculation::SolarPositionCalculation.new(:latitude => "45.47", :meridian => "-75", :longitude => "-73.75", :timezone_identifier => "America/Montreal", :year => 2012, :month => 2, :day => 19, :hour => 2, :minute => 0, :surface_inclination => "0", :surface_azimuth => "0")
+      solar_position_calculation_1.sunset.should == "17:19"
+
+      solar_position_calculation_2 = SolarGeometryCalculation::SolarPositionCalculation.new(:latitude => "45.47", :meridian => "-75", :longitude => "-73.75", :timezone_identifier => "America/Montreal", :year => 2012, :month => 2, :day => 19, :hour => 22, :minute => 0, :surface_inclination => "0", :surface_azimuth => "0")
+      solar_position_calculation_2.sunset.should == "17:19" 
+
+      solar_position_calculation_1.sunset.should == solar_position_calculation_2.sunset    
+
+    end
     
     context "(solar energy and applications course - homework 2)" do
       
