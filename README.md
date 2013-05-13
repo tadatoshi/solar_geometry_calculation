@@ -11,20 +11,16 @@ Add to your Gemfile and run the `bundle` command to install it.
 gem "solar_geometry_calculation"
 ```
 
-**Requires Ruby 1.8.7 or later.**
+**Requires Ruby 2.0.0 or later.**
 
 
 ## Usage
 
 Instantiate SolarPositionCalculation class.
 
-```ruby 1.9.2 or later
+```ruby
 solar_position_calculation = SolarPositionCalculation.new(latitude: "45.5")
 ```
-
-```ruby 1.8.7
-solar_position_calculation = SolarPositionCalculation.new(:latitude => "45.5")
-``` 
 
 
 ## Development
