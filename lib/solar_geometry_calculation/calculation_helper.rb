@@ -32,13 +32,13 @@ module SolarGeometryCalculation
       BigDecimal(Math.tan(angle_in_radian).to_s)
     end   
 
-    def big_decimal_asin(angle_in_radian)
-      BigDecimal(Math.asin(angle_in_radian).to_s)
+    def big_decimal_asin(sin_value)
+      BigDecimal(Math.asin(sin_value).to_s)
     end
 
-    def big_decimal_acos(angle_in_radian)
-      BigDecimal(Math.acos(angle_in_radian).to_s)
-    end    
+    def big_decimal_acos(cos_value)
+      BigDecimal(Math.acos(cos_value).to_s)
+    end
     
   end
 
